@@ -8,6 +8,7 @@ const Signup = () => {
     const [membership , setMembership ] = useState('')
 
     const handleSubmit = async event => {
+       
         event.preventDefault()
     
         const response = await fetch('http://localhost:5005/auth/signup', {
