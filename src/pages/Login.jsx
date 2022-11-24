@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { SessionContext } from '../contexts/SessionContext'
+import { SessionContext } from '../contexts/SessionContext'
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   // const [error, setError] = useState()
-  // const { setToken } = useContext(SessionContext)
+  const { setToken } = useContext(SessionContext)
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,10 +18,10 @@ const Login = () => {
       body: JSON.stringify({ username, password }),
     });
     let token = await res.json();
-    console.log("here is your new user", token);
-    localStorage.setItem("authToken", token);
+   
+   setToken(token)
     console.log("token", token);
-    navigate("/profile");
+    navigate("/");
   };
 
   return (
