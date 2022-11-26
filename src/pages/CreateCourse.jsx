@@ -35,18 +35,19 @@ const CreateCourse = () => {
         <div>
 
 <Link  to= {`/courses`} >back</Link>
+           
             <form onSubmit={handleSubmit}>
 
           
-                <input type="file"  value={image}  placeholder="image"  required onChange={event => setImage(event.target.value)}  />
+                <input type="file"     value={image}        placeholder="image"  required onChange={event => setImage(event.target.value)}  />
                 
-                <input type="text"      value={title}   placeholder="title" required onChange={event => setTitle(event.target.value)}  />
+                <input type="text"     value={title}        placeholder="title" required onChange={event => setTitle(event.target.value)}  />
                 
-                <input type="text"  value={description}  placeholder="description"  required onChange={event => setDescription(event.target.value)}  />
+                <input type="text"     value={description}  placeholder="description"  required onChange={event => setDescription(event.target.value)}  />
                 
-                <input type="number"  value={price}  placeholder="Price "  required onChange={event => setPrice(event.target.value)}  />
+                <input type="number"   value={price}        placeholder="Price "  required onChange={event => setPrice(event.target.value)}  />
               
-                <input type="text"  value={video}  placeholder="YouTube-ID"  required onChange={event => setVideo(event.target.value)}  />
+                <input type="text"     value={video}        placeholder="YouTube-ID"  required onChange={event => setVideo(event.target.value)}  />
               
               
                 <button type="submit">Create</button>

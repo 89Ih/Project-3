@@ -1,14 +1,16 @@
+
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SessionContext } from '../contexts/SessionContext'
+import { SessionContext } from "../contexts/SessionContext";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "../comps/Header";
+import Footer from '../comps/Footer';
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  // const [error, setError] = useState()
-  const { setToken } = useContext(SessionContext)
-
+  const { setToken } = useContext(SessionContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,36 +20,44 @@ const Login = () => {
       body: JSON.stringify({ username, password }),
     });
     let token = await res.json();
-   
-   setToken(token)
+
+    setToken(token);
     console.log("token", token);
-    navigate("/");
+    navigate("/courses");
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {/* {error?.message && <p>{error.message}</p>} */}
-
-        <input
-          type="text"
-          value={username}
-          placeholder="username"
-          required
-          onChange={(event) => setUsername(event.target.value)}
-        />
-
-        <input
-          type="password"
-          value={password}
-          placeholder="Password"
-          required
-          onChange={(event) => setPassword(event.target.value)}
-        />
-
-        <button type="submit">Login</button>
+    <div className="App-body "  >
+      <Header/>
+  
+      <form className="d-flex flex-column  align-self-center border border-1 w-50"  onSubmit={handleSubmit}>
+        <div className="form-group p-2 w-100">
+          <input
+            type="text"
+            className="form-control"
+            value={username}
+            placeholder="username"
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
+        <div className="form-group p-2 w-100">
+          <input
+            value={password}
+            type="password"
+            className="form-control"
+            placeholder="Password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+          <div className="form-group p-2 ">
+          <button type="submit" className="btn w-100 css ">Login</button>
+          </div>
       </form>
+     
+      <Footer/>
+     
     </div>
+    
   );
 };
 
