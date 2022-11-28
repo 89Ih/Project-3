@@ -1,6 +1,6 @@
 import Header from '../comps/Header'
 import { useState } from 'react'
-
+import axios from 'axios'
 
 const Signup = () => {
   const [username, setUsername] = useState('')
@@ -8,19 +8,36 @@ const Signup = () => {
   const [email, setEmail] = useState('')
   const [membership, setMembership] = useState('')
 
+  // const handleSubmit = async event => {
+
+  //   event.preventDefault()
+
+  //   const response = await fetch('http://localhost:5005/auth/signup', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ username, password, email, membership }),
+  //   })
+  //   const parsed = await response.json()
+  //   console.log(parsed)
+  // }
+
   const handleSubmit = async event => {
 
     event.preventDefault()
+    const data = new FormData()
+    const profile = event.target.imageUrl.files[0];
+    data.append("imageUrl",profile);
+    data.append("username",username);
+    data.append("password",password);
+    data.append("email",email);
+    data.append("membership",membership);
+   
+    const res = await axios.post('http://localhost:5005/auth/signup', data)
+  
+    console.log(res.data)
 
-    const response = await fetch('http://localhost:5005/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password, email, membership }),
-    })
-    const parsed = await response.json()
-    console.log(parsed)
   }
 
 
@@ -31,7 +48,9 @@ const Signup = () => {
       <form
         className="d-flex flex-column  align-self-center border border-1 w-50"
         onSubmit={handleSubmit}
-      >
+      ><div className="form-group p-2 w-100">
+        <input id='img' type="file" name="imageUrl" accept="image/png, image/jpg"  className="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"/>
+       </div>
         <div className="form-group p-2 w-100">
           <input
             type="text"

@@ -1,7 +1,7 @@
 import { Button } from "bootstrap";
 import { useEffect, useRef, useState } from "react";
 const UploadWidget = () => {
-    const[url,setUrl] = useState({})
+   
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
     useEffect(()=>{
@@ -13,7 +13,7 @@ const UploadWidget = () => {
                 console.log('see below')
                 console.log({data:result.info.url})
                 
-                setUrl({data:result.info.url})
+              
             });
             
     },[])
@@ -24,7 +24,7 @@ const UploadWidget = () => {
         <button onClick={()=> widgetRef.current.open()}>
             Upload
         </button>
-        {/* <p>{url?.data} hello</p> */}
+     
         </div>
      );
 }
