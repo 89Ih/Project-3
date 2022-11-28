@@ -11,6 +11,9 @@ const Header = () => {
             <b><a className="nav-link text-light " href="/">Home</a></b>
             <b><a className="nav-link text-light " href="/about">About us</a></b>
             <b><a className="nav-link text-light " href="/contact">Contact</a></b>
+            <b><a className="nav-link text-light " href="/courses">All courses</a></b>
+            <b><a className="nav-link text-light " href="/create">Add new course</a></b>
+            {/* <b><a className="nav-link text-light " href="javascript:history.back()">Back</a></b> */}
           </div>
         </div>
       </nav>

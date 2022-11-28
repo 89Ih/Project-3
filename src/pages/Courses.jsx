@@ -23,6 +23,9 @@ const Courses = () => {
         
         retrieveCourses()
     },[]); 
+
+
+    
     
     const sortName = () => {
         
@@ -35,41 +38,29 @@ const Courses = () => {
     return (
     <div className='App-body'>
   
-   
-            <div className=" d-flex flex-column " style={{gap:5}}>
+
+            <div className=" d-flex flex-column " style={{ gap: 10 }}>
                 <Header />
-                <div className=" w-50 d-flex flex-row  align-self-center align-items-center">
-                <input className="form-control" type="text" placeholder="Search" value={query} onChange={(event) => { setQuery(event.target.value) }}/>
-                 
-                <img onClick={sortName} src={Sort} alt={'sort'}  className="css-sort"/>
+                <div className=" w-50 align-self-center align-items-center">
+                    <div className=" d-flex flex-row  ">
+                        <input className="form-control" type="text" placeholder="Search" value={query} onChange={(event) => { setQuery(event.target.value) }} />
+                        <img onClick={sortName} src={Sort} alt={'sort'} className="css-sort" />
+                    </div>
+                </div>
+                <div className=" p-3 ">
+                    <div className="card align-self-center align-items-center d-flex flex-wrap " style={{ width: 300, height: 275, gap: 20, background: 'white' }}>
+                        {courses.filter((course) => course.title.toLowerCase().includes(query.toLowerCase())
+                        ).map((course) => (<div key={course._id}>
+                            <Link to={`/course/${course._id}`} ><img src={course.image} className="card-img-top" style={{ width: 300, height: 150, gap: 10 }} alt={course.title} /></Link>
+                            <div className="card-body d-flex flex-column align-items-center ">
+                                <h5 className="card-title ">{course.title}</h5>
+                                <p className="card-text">{course.description}</p>
+                                <p className="card-text">{course.price}€</p>
+                            </div>
+                        </div>))}
+                    </div>
                 </div>
             </div>
-   
-    
-    <div >
-        
-        {courses.filter((course) => course.title.toLowerCase().includes(query.toLowerCase())
-        )
-        .map((course)=>(<div key={course._id}>
-           
-          <Link  to= {`/course/${course._id}`} ><img src={course.image} width={50} alt={course.title}/></Link>
-           
-           <h2>{course.title}</h2>
-         
-           <p>{course.description}</p>
-          
-           <p>{course.price}</p> 
-       
-
-          
-        </div>
-        
-        ))
-            
-        }
-  
-  </div>
-
   <Footer/>
       </div> );
 }

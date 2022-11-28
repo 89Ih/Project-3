@@ -1,59 +1,66 @@
-import { useState } from 'react' 
-import {Link } from "react-router-dom";
-
+import { useEffect, useState } from 'react'
+import axios from 'axios';
+import UploadWidget from '../comps/UploadWidget';
+import Header from '../comps/Header';
+import Footer from '../comps/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CreateCourse = () => {
-    const [title , setTitle ] = useState('')
-    const [description , setDescription] = useState('')
-    const [price , setPrice] = useState(0)
-    const [video , setVideo] = useState('')
-    const [image , setImage] = useState('')
-   
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [price, setPrice] = useState(0)
+  const [video, setVideo] = useState('')
+  const [image, setImage] = useState('')
 
 
 
-    const handleSubmit = async event => {
-       
-        event.preventDefault()
-    
-        const response = await fetch('http://localhost:5005/create', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ title, description,price,video,image}),
-        })
-        const parsed = await response.json()
-        
-        console.log(parsed)
-      
-      }
-    
+
+  const handleSubmit = async event => {
+
+    event.preventDefault()
+    const data = new FormData()
+    const image = event.target.imageUrl.files[0];
+    data.append("imageUrl",image);
+    data.append("description",description);
+    data.append("price",price);
+    data.append("video",video);
+    data.append("title",title);
+    const res = await axios.post('http://localhost:5005/create', data)
+  
+    console.log(res.data)
+
+  }
 
 
-    return (
-        <div>
-
-<Link  to= {`/courses`} >back</Link>
+  return (
+    <div  className='App-body'>
+      <div>
+      <Header />
+      {/* <UploadWidget/> */}
+      </div>
+      <form onSubmit={handleSubmit}  className="d-flex flex-column  align-self-center border border-1 w-50">
+  
+          <input id='img' type="file" name="imageUrl" accept="image/png, image/jpg"  className="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"/>
            
-            <form onSubmit={handleSubmit}>
-
-          
-                <input type="file"     value={image}        placeholder="image"  required onChange={event => setImage(event.target.value)}  />
-                
-                <input type="text"     value={title}        placeholder="title" required onChange={event => setTitle(event.target.value)}  />
-                
-                <input type="text"     value={description}  placeholder="description"  required onChange={event => setDescription(event.target.value)}  />
-                
-                <input type="number"   value={price}        placeholder="Price "  required onChange={event => setPrice(event.target.value)}  />
-              
-                <input type="text"     value={video}        placeholder="YouTube-ID"  required onChange={event => setVideo(event.target.value)}  />
-              
-              
-                <button type="submit">Create</button>
-            </form>
-        </div>
-      );
+          <div className="form-group p-2 w-100">
+          <input type="text" value={title} placeholder="title" required onChange={event => setTitle(event.target.value)} className="form-control"/>
+          </div>
+          <div className="form-group p-2 w-100"> 
+          <input type="text" value={description} placeholder="description" required onChange={event => setDescription(event.target.value)} className="form-control" />
+          </div>
+          <div className="form-group p-2 w-100"> 
+          <input type="number" value={price} placeholder="Price " required onChange={event => setPrice(event.target.value)} className="form-control" />
+          </div>
+          <div className="form-group p-2 w-100"> 
+          <input type="text" value={video} placeholder="YouTube-ID" required onChange={event => setVideo(event.target.value)}className="form-control" />
+          </div>
+          <div className="form-group p-2 w-100">  
+          <button type="submit" className="btn w-100 css" >Create</button>
+          </div> 
+      </form>
+      <Footer/>
+    </div>
+  );
 }
- 
+
 export default CreateCourse;

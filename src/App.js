@@ -23,7 +23,7 @@ function App() {
           <Route      path="/login"        element={<Login/>}/>
           <Route      path="/course/:id"   element={<CourseDetails/>}/>
           <Route      path="/create"       element={<CreateCourse/>}/>
-          <Route      path='/courses'       element={<ProfilePage> <Courses/></ProfilePage>}/>
+          <Route      path='/courses'      element={<Courses/>}/>
         
         </Routes>
         

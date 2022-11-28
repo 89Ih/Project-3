@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import {Link, useParams } from "react-router-dom";
 import ReactPlayer from 'react-player/youtube'
-
+import Header from "../comps/Header";
+import Footer from "../comps/Footer";
 const CourseDetails = () => {
    
     const[course,setCourse] = useState([])
@@ -30,16 +31,20 @@ const CourseDetails = () => {
    
     
     
-    return (<div >
-  
-    <label ><h1>Course-Details</h1></label>
-    <Link  to= {`/courses`} >back</Link>
-           <ReactPlayer url={course.video} />     
+    return (<div className="App-body" >
+        <div>
+        <Header/>
+       <div className="align-self-center align-items-center">
+       <ReactPlayer url={course.video} className='w-50 h-500 rounded border'/>     
            <h2>{course.title}</h2>
            <p>{course.description}</p>
            <p>{course.price}€</p> 
+       </div>
+           
+        </div>
         
- 
+        
+           <Footer/>
       </div> );
 }
  
