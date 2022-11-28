@@ -5,42 +5,18 @@ import hero from "../icons/hero.jpg";
 
 const Home = () => {
   return (
-    <div className="App-body ">
+    <div className="App-body ">   
+
+
       <nav className="navbar">
         <div className="container-fluid  flex-row ">
           <div className="p-2">
-            <img
-              src={header}
-              alt={"header"}
-              style={{ height: 75 }}
-              className="mx-2"
-            />
-
-            <span className="p-2 w-100   navbar-brand mb-5 h1 text-light">
-              Master Course
-            </span>
+            <img src={header} alt={"header"}style={{ height: 75 }} className="mx-2"/>
+            <span className="p-2 w-100   navbar-brand mb-5 h1 text-light">Master Course</span>
           </div>
-
           <div className="p-2 d-flex flex-row mx-2" style={{ gap: 15 }}>
-            <b>
-              <a
-                className="p-1  nav-link css rounded  text-center "
-                href="/login"
-                style={{ width: 75 }}
-              >
-                Log in
-              </a>
-            </b>
-
-            <b>
-              <a
-                className="p-1  nav-link css rounded  text-center "
-                href="/signup"
-                style={{ width: 75 }}
-              >
-                Sign up
-              </a>
-            </b>
+            <b><a className="p-1  nav-link css rounded  text-center "href="/login"style={{ width: 75 }}>Log in</a></b>
+            <b><a className="p-1  nav-link css rounded  text-center "href="/signup"style={{ width: 75 }}>Sign up</a></b>
           </div>
         </div>
       </nav>

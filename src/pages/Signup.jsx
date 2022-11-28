@@ -1,27 +1,15 @@
 import Header from '../comps/Header'
 import { useState } from 'react'
 import axios from 'axios'
-
+import { useNavigate } from "react-router-dom";
+import Footer from '../comps/Footer';
 const Signup = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [membership, setMembership] = useState('')
 
-  // const handleSubmit = async event => {
-
-  //   event.preventDefault()
-
-  //   const response = await fetch('http://localhost:5005/auth/signup', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ username, password, email, membership }),
-  //   })
-  //   const parsed = await response.json()
-  //   console.log(parsed)
-  // }
 
   const handleSubmit = async event => {
 
@@ -37,10 +25,8 @@ const Signup = () => {
     const res = await axios.post('http://localhost:5005/auth/signup', data)
   
     console.log(res.data)
-
+    navigate("/login")
   }
-
-
 
   return (
     <div className="App-body ">
@@ -98,11 +84,9 @@ const Signup = () => {
         </div>
 
       </form>
-      <footer  >
-      {/* <a  className="nav-link css" href="#">About us</a> */}
-     </footer>
+   <Footer/>
     </div>
   );
 }
 
-export default Signup;
+export default Signup
