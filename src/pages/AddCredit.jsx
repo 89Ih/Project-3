@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
+import Header from "../comps/Header";
+import Footer from "../comps/Footer";
 
 const AddCredit = () => {
   const [credit, setCredit] = useState("");
@@ -18,29 +20,12 @@ const AddCredit = () => {
     });
     const parsed = await res.json();
     console.log(parsed);
-    navigate("/");
+    navigate("/courses");
   };
 
   return (
-    <div>
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled">Disabled</a>
-      </div>
-    </div>
-  </div>
-</nav>
-
-
+    <div className="App-body">
+      <Header />
       <form onSubmit={handleSubmit}>
         <input
           type="number"
@@ -51,6 +36,7 @@ const AddCredit = () => {
 
         <button type="submit">Add Credit</button>
       </form>
+      <Footer />
     </div>
   );
 };

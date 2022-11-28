@@ -9,7 +9,7 @@ const SessionContextProvider = ({ children }) => {
     key: "authToken",
     defaultValue: undefined,
   });
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const verifyToken = async () => {
