@@ -1,5 +1,9 @@
 import header from "../icons/header.png";
+import { SessionContext } from "../contexts/SessionContext";
+import { useContext } from "react";
+
 const Header = () => {
+  const { user, token } = useContext(SessionContext);
   return (
     <nav className="navbar navbar-expand-lg  ">
       <div className="container-fluid d-flex">
@@ -51,9 +55,11 @@ const Header = () => {
               </a>
             </b>
             <b>
-              <a className="nav-link text-light " href="/create">
-                Add new course
-              </a>
+              {user?.user?.membership == "teacher" && (
+                <a className="nav-link text-light " href="/create">
+                  Add new course
+                </a>
+              )}
             </b>
             {/* <b><a className="nav-link text-light " href="javascript:history.back()">Back</a></b> */}
           </div>
