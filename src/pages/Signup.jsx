@@ -4,9 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../comps/Footer";
 const Signup = () => {
- 
   const navigate = useNavigate();
-  
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -76,20 +75,20 @@ const Signup = () => {
           />
         </div>
         <div className="form-group p-2 w-100">
-          <input
+          <select
             type="text"
             value={membership}
-            placeholder="Membership"
+            name=""
+            id=""
             className="form-control"
-            required
             onChange={(event) => setMembership(event.target.value)}
-          />
+            required
+          >
+            <option value="Select your membership">Select membership</option>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
         </div>
-        {/* <label for="me">Membership:</label>
-                <select name="Membership" id="me" onChange={event => setMembership(event.target.value)}>
-                <option value={membership}>Teacher</option>
-                <option value={membership}>Student</option>
-                </select> */}
 
         <div className="form-group p-2 ">
           <button className="btn w-100 css " type="submit">
