@@ -27,7 +27,7 @@ const UpdateProfile = () => {
     data.append("email",email);
     data.append("membership",membership);
  
-    const res = await axios.put(`http://localhost:5005/profile/${params.id}`, data)
+    const res = await axios.put(`http://localhost:5005/auth/profile/${params.id}`, data)
 
   }
 
