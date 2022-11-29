@@ -8,7 +8,7 @@ import Footer from "../comps/Footer";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedin, setIsLoggedin] = useState(false);
+  /*   const [isLoggedin, setIsLoggedin] = useState(false); */
   const navigate = useNavigate();
   const { setToken } = useContext(SessionContext);
 
@@ -22,7 +22,7 @@ const Login = () => {
     let token = await res.json();
 
     setToken(token);
-    setIsLoggedin(true);
+    /*   setIsLoggedin(true); */
     console.log("token", token);
     navigate("/courses");
   };

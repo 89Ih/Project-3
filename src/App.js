@@ -7,6 +7,7 @@ import CreateCourse from "./pages/CreateCourse";
 import { Route, Routes } from "react-router-dom";
 import AddCredit from "./pages/AddCredit";
 import TeachersRoutes from "./pages/TeachersRoutes";
+import PrivateRoutes from "./pages/PrivateRoutes";
 import "./App.css";
 import { SessionContext } from "./contexts/SessionContext";
 import { useContext } from "react";
@@ -21,6 +22,14 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/course/:id" element={<CourseDetails />} />
+        <Route
+          path="courses"
+          element={
+            <PrivateRoutes>
+              <Courses />
+            </PrivateRoutes>
+          }
+        />
         <Route
           path="create"
           element={
