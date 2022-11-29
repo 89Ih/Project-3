@@ -1,14 +1,14 @@
-
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../comps/Header";
-import Footer from '../comps/Footer';
+import Footer from "../comps/Footer";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  /*   const [isLoggedin, setIsLoggedin] = useState(false); */
   const navigate = useNavigate();
   const { setToken } = useContext(SessionContext);
 
@@ -22,15 +22,19 @@ const Login = () => {
     let token = await res.json();
 
     setToken(token);
+    /*   setIsLoggedin(true); */
     console.log("token", token);
     navigate("/courses");
   };
 
   return (
-    <div className="App-body "  >
-      <Header/>
-  
-      <form className="d-flex flex-column  align-self-center border border-1 w-50"  onSubmit={handleSubmit}>
+    <div className="App-body ">
+      <Header />
+
+      <form
+        className="d-flex flex-column  align-self-center border border-1 w-50"
+        onSubmit={handleSubmit}
+      >
         <div className="form-group p-2 w-100">
           <input
             type="text"
@@ -49,15 +53,15 @@ const Login = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-          <div className="form-group p-2 ">
-          <button type="submit" className="btn w-100 css ">Login</button>
-          </div>
+        <div className="form-group p-2 ">
+          <button type="submit" className="btn w-100 css ">
+            Login
+          </button>
+        </div>
       </form>
-     
-      <Footer/>
-     
+
+      <Footer />
     </div>
-    
   );
 };
 

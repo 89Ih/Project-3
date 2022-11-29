@@ -1,36 +1,38 @@
-import { useLocalStorage } from '@mantine/hooks'
+import { useLocalStorage } from "@mantine/hooks";
 
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from "react";
 
-export const SessionContext = createContext()
+export const SessionContext = createContext();
 
 const SessionContextProvider = ({ children }) => {
-
-  const [token, setToken] = useLocalStorage({ key: 'authToken', defaultValue: undefined })
- 
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-
+  const [token, setToken] = useLocalStorage({
+    key: "authToken",
+    defaultValue: undefined,
+  });
+  const [user, setUser] = useState();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const verifyToken = async () => {
-    const response = await fetch('http://localhost:5005/auth/verify', {
+    const response = await fetch("http://localhost:5005/auth/verify", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    })
-    const parsed = await response.json()
-    console.log(parsed.payload)
-    if (parsed.message === 'Token OK') {
-      setIsAuthenticated(true)
+    });
+    const parsed = await response.json();
+    console.log(parsed.payload);
+    if (parsed.message === "Token OK") {
+      setIsAuthenticated(true);
+      setUser(parsed.payload);
     }
-  }
+  };
 
   useEffect(() => {
     if (token) {
-      verifyToken()
+      verifyToken();
     } else {
-      setIsAuthenticated(false)
+      setIsAuthenticated(false);
     }
-  }, [token])
+  }, [token]);
 
   const fetchWithToken =
     (method, endpoint, callback, body = null) =>
@@ -39,25 +41,32 @@ const SessionContextProvider = ({ children }) => {
         method,
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body,
-      })
-      const parsed = await response.json()
+      });
+      const parsed = await response.json();
 
-      if (parsed.message === 'Token OK') {
-        
-        setIsAuthenticated(true)
+      if (parsed.message === "Token OK") {
+        setIsAuthenticated(true);
       }
-      callback(parsed)
-    }
-   
+      callback(parsed);
+    };
 
   return (
-    <SessionContext.Provider value={{ token, setToken, isAuthenticated, fetchWithToken }}>
+    <SessionContext.Provider
+      value={{
+        token,
+        setToken,
+        isAuthenticated,
+        fetchWithToken,
+        user,
+        setUser,
+      }}
+    >
       {children}
     </SessionContext.Provider>
-  )
-}
+  );
+};
 
-export default SessionContextProvider
+export default SessionContextProvider;

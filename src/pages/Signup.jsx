@@ -3,6 +3,11 @@ import { useState } from 'react'
 import axios from 'axios'
 
 
+import Header from "../comps/Header";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Footer from "../comps/Footer";
 const Signup = () => {
   const[username,setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -23,12 +28,11 @@ const Signup = () => {
     data.append("password",password);
     data.append("membership",membership);
  
-
-    const response = await axios.post('http://localhost:5005/auth/signup', data)
+    const res = await axios.post("http://localhost:5005/auth/signup", data);
+    console.log(res.data);
+    navigate("/login");
    
     }
-
-
 
   return (
     <div className="App-body ">
@@ -39,6 +43,18 @@ const Signup = () => {
       >
         <div className="form-group p-2 w-100">
         <input id='img' type="file" name="imageUrl" accept="image/png, image/jpg"  className="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"/>
+        </div>
+        <div className="form-group p-2 w-100">
+          <input
+            id="img"
+            type="file"
+            name="imageUrl"
+            accept="image/png, image/jpg"
+            className="form-control"
+            placeholder=""
+            aria-label=""
+            aria-describedby="basic-addon1"
+          />
         </div>
         <div className="form-group p-2 w-100">
           <input
@@ -66,7 +82,8 @@ const Signup = () => {
             className="form-control"
             required
             onChange={(event) => setEmail(event.target.value)}
-          /></div>
+          />
+        </div>
         <div className="form-group p-2 w-100">
           <input
             type="text"
@@ -75,7 +92,8 @@ const Signup = () => {
             className="form-control"
             required
             onChange={(event) => setMembership(event.target.value)}
-          /></div>
+          />
+        </div>
         {/* <label for="me">Membership:</label>
                 <select name="Membership" id="me" onChange={event => setMembership(event.target.value)}>
                 <option value={membership}>Teacher</option>
@@ -83,15 +101,14 @@ const Signup = () => {
                 </select> */}
 
         <div className="form-group p-2 ">
-          <button className="btn w-100 css " type="submit">Signup</button>
+          <button className="btn w-100 css " type="submit">
+            Signup
+          </button>
         </div>
-
       </form>
-      <footer  >
-      {/* <a  className="nav-link css" href="#">About us</a> */}
-     </footer>
+      <Footer />
     </div>
   );
-}
+};
 
 export default Signup;
