@@ -6,12 +6,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Profile = () => {
   
   const { isAuthenticated ,user, token } = useContext(SessionContext);
-
+console.log()
 
   return (<div>
    { isAuthenticated ?
-   (<Link to={`/profile/6384b600a665cb46bd53adac`} ><img src={user?.user?.profile} alt={"name"} className="rounded-circle" style={{width:75, height:75}}/></Link>)
-   :(<p>  </p>)
+   (<Link to={`/profile/${user?.user?._id}`} ><img src={user?.user?.profile} alt={"name"} className="rounded-circle" style={{width:75, height:75}}/></Link>)
+   :
+   (<p></p>)
    }
        
   
