@@ -1,6 +1,7 @@
 import header from "../icons/header.png";
 import { SessionContext } from "../contexts/SessionContext";
 import { useContext } from "react";
+import Profile from "./profile";
 
 const Header = () => {
   const { user, token } = useContext(SessionContext);
@@ -88,6 +89,7 @@ const Header = () => {
               )}
             </b>
             {/* <b><a className="nav-link text-light " href="javascript:history.back()">Back</a></b> */}
+            <Profile/>
           </div>
         </div>
       </div>
