@@ -39,7 +39,6 @@ function App() {
           }
         />
         <Route path="/myCourses" element={<MyCourses />} />
-        <Route path="/courses" element={<Courses />} />
         <Route path="/credit" element={<AddCredit />} />
       </Routes>
     </div>

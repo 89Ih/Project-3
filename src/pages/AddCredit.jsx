@@ -21,7 +21,7 @@ const AddCredit = () => {
     const parsed = await res.json();
     console.log(parsed);
     setCredit(0);
-    //navigate("/courses");
+    navigate("/courses");
   };
 
   return (
@@ -38,7 +38,7 @@ const AddCredit = () => {
         </div>
         <div className="creditInput">
           <span>Card Holder</span>
-          <input type="text" maxlength="16" className="card-input"></input>
+          <input type="text" maxLength="16" className="card-input"></input>
         </div>
         <div className="box">
           <div className="inputBox">
@@ -80,7 +80,7 @@ const AddCredit = () => {
           </div>
           <div className="inputBox">
             <span>cvv</span>
-            <input type="text" maxlength="4" className="cvv-input"></input>
+            <input type="text" maxLength="4" className="cvv-input"></input>
           </div>
         </div>
         <input

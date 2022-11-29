@@ -3,9 +3,9 @@ import { Navigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
 
 const PrivateRoutes = ({ children }) => {
-  const { user, token } = useContext(SessionContext);
+  const { isAuthenticated } = useContext(SessionContext);
 
-  return user ? <>{children}</> : Navigate("/login");
+  return isAuthenticated ? <>{children}</> : Navigate("/login");
 };
 
 export default PrivateRoutes;

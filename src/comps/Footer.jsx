@@ -17,9 +17,11 @@ const Footer = () => {
       style={{ gap: 5 }}
     >
       <b>
-        <a className="nav-link text-light  " href="/login" onClick={logout}>
-          LOGOUT
-        </a>
+        {isAuthenticated && (
+          <a className="nav-link text-light  " href="/login" onClick={logout}>
+            LOGOUT
+          </a>
+        )}
       </b>
 
       {isAuthenticated ? (

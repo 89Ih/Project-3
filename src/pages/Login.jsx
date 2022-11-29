@@ -8,8 +8,8 @@ import Footer from "../comps/Footer";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  /*   const [isLoggedin, setIsLoggedin] = useState(false); */
   const navigate = useNavigate();
+  /*   const [isLoggedin, setIsLoggedin] = useState(false); */
   const { setToken } = useContext(SessionContext);
 
   const handleSubmit = async (event) => {
