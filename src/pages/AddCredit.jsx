@@ -21,7 +21,7 @@ const AddCredit = () => {
     });
     const parsed = await res.json();
     console.log(parsed);
-    navigate("/courses");
+    // navigate("/courses");
   };
 
   return (

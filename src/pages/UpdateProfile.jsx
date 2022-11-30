@@ -12,7 +12,8 @@ const UpdateProfile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [membership, setMembership] = useState("");
-  const { user, verifyToken, test, updatedUser } = useContext(SessionContext);
+  const { user, verifyToken, test, updatedUser, setTest } =
+    useContext(SessionContext);
 
   /* const navigate = useNavigate(); */
 
@@ -23,7 +24,7 @@ const UpdateProfile = () => {
 
   const handleUpdate = async (event) => {
     event.preventDefault();
-
+    setTest(!test);
     const data = new FormData();
     const image = event.target.imageUrl.files[0];
 
