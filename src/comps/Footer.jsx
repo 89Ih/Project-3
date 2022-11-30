@@ -8,8 +8,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const { isAuthenticated, token } = useContext(SessionContext);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const navigate = useNavigate();
   const logout = () => {
-    const navigate = useNavigate();
+    
     localStorage.clear();
     setIsLoggedin(false);
     navigate("/login");
