@@ -37,20 +37,13 @@ const CourseDetails = () => {
     
     const deleteCourse = async (event) => {
         event.preventDefault();
-        const res = await axios.delete(`http://localhost:5005/course/${params.id}`, course._id);
+        const res = await axios.delete(`${process.env.REACT_APP_URL}course/${params.id}`, course._id);
         console.log(res.data);
         navigate("/courses");
       };
     
-      const deleteRating= async (event) => {
-        event.preventDefault();
-        const res = await axios.delete(`http://localhost:5005/rating/${params.id}`, course._id);
-        console.log(res.data);
-        navigate(`/courses/${course._id}`);
-      };
   
-    
-    
+
     return (<div className="App-body" >
         <div>
         <Header/>

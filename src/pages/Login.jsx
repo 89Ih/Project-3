@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let res = await fetch("http://localhost:5005/auth/login", {
+    let res = await fetch(`${process.env.REACT_APP_URL}auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

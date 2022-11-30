@@ -15,7 +15,7 @@ const SessionContextProvider = ({ children }) => {
   const [test, setTest] = useState(false);
 
   const verifyToken = async () => {
-    const response = await fetch("http://localhost:5005/auth/verify", {
+    const response = await fetch(`${process.env.REACT_APP_URL}auth/verify`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

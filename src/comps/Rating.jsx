@@ -27,7 +27,7 @@ const Rating = () => {
       const[rate,setRate] = useState({})
       useEffect(()=> {
         const retrieveRating = async()=>{
-            const res = await axios.get(`http://localhost:5005/rating/${params.id}`);
+            const res = await axios.get(`${process.env.REACT_APP_URL}rating/${params.id}`);
             console.log("Rating",res.data)
             setRate(res.data);
         }
@@ -37,7 +37,7 @@ const Rating = () => {
     const navigate = useNavigate();
     const deleteRating= async (event) => {
       event.preventDefault();
-      const res = await axios.delete(`http://localhost:5005/rating/${params.id}`, params.id);
+      const res = await axios.delete(`${process.env.REACT_APP_URL}${params.id}`, params.id);
       console.log(res.data);
       // navigate(`/courses/${course._id}`);
     };

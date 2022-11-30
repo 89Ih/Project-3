@@ -16,7 +16,7 @@ const Courses = () => {
     
         const retrieveCourses = async()=>{
     
-            const res = await axios.get('http://localhost:5005/courses');
+            const res = await axios.get(`${process.env.REACT_APP_URL}courses`);
     
             console.log(res.data)
     
@@ -37,15 +37,6 @@ const Courses = () => {
       };
 
      
-  
-    //   const deleteCourse = (courseId) => {
-    //     const filteredCourses = courses.filter((course) => {
-    //       return course._id !== courseId;
-    //     });
-      
-    //     setCourses(filteredCourses);
-    //   };
-
 
       
     return (

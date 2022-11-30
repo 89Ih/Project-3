@@ -7,8 +7,8 @@ const UploadWidget = () => {
     useEffect(()=>{
            cloudinaryRef.current= window.cloudinary;
            widgetRef.current= cloudinaryRef.current.createUploadWidget({
-                cloudName:'datpr2tv8',
-                uploadPreset:'xi3z2zmg'
+                cloudName:process.env.REACT_APP_CLOUD_NAME,
+                uploadPreset:process.env.REACT_APP_uploadPreset
             }, function(error,result){
                 console.log('see below')
                 console.log({data:result.info.url})

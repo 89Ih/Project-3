@@ -1,8 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
-import Header from "../comps/Header";
-import Footer from "../comps/Footer";
+
 
 const AddCredit = () => {
   const [credit, setCredit] = useState("");
@@ -11,7 +10,7 @@ const AddCredit = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setTest(!test);
-    let res = await fetch("http://localhost:5005/credit", {
+    let res = await fetch(`${process.env.REACT_APP_URL}credit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
