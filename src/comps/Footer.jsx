@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   const { isAuthenticated, token } = useContext(SessionContext);
   const [isLoggedin, setIsLoggedin] = useState(false);
