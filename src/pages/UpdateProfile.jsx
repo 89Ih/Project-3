@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
-import Credit from "../comps/Credit";
 import AddCredit from "./AddCredit";
+import { SessionContext } from "../contexts/SessionContext";
 
 const UpdateProfile = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [membership, setMembership] = useState("");
+  const { user } = useContext(SessionContext);
   /* const navigate = useNavigate(); */
 
   const params = useParams();
@@ -34,13 +35,19 @@ const UpdateProfile = () => {
     //////
   };
 
+  /*   useEffect(() => {
+    axios
+      .get(`http://localhost:5005/auth/profile/${params.id}`)
+      .then((response) => response.json());
+  }, [UpdateProfile]); */
+
   return (
     <div className="App-body">
       <Header />
       <div>
         <AddCredit />
         <h1>
-          <Credit />
+          <p> Your Credit: {user?.user?.credit} €</p>
         </h1>
       </div>
 

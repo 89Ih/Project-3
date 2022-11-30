@@ -11,7 +11,6 @@ import TeachersRoutes from "./pages/TeachersRoutes";
 import PrivateRoutes from "./pages/PrivateRoutes";
 import UpdateProfile from "./pages/UpdateProfile";
 import MyCourses from "./pages/MyCourses";
-import Credit from "./comps/Credit";
 
 import { SessionContext } from "./contexts/SessionContext";
 import { useContext } from "react";

@@ -35,8 +35,6 @@ const AddCredit = () => {
 
         <button type="submit">Add Credit</button>
       </form>
-
-      <Footer />
     </div>
   );
 };
