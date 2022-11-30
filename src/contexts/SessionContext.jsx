@@ -11,6 +11,7 @@ const SessionContextProvider = ({ children }) => {
   });
   const [user, setUser] = useState();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [updatedUser, setUpdatedUser] = useState();
 
   const verifyToken = async () => {
     const response = await fetch("http://localhost:5005/auth/verify", {
@@ -19,10 +20,11 @@ const SessionContextProvider = ({ children }) => {
       },
     });
     const parsed = await response.json();
-    console.log(parsed.payload);
+    console.log("parsed tokrn", parsed.payload);
     if (parsed.message === "Token OK") {
       setIsAuthenticated(true);
       setUser(parsed.payload);
+      setUpdatedUser(parsed.findUser);
     }
   };
 
@@ -62,6 +64,9 @@ const SessionContextProvider = ({ children }) => {
         fetchWithToken,
         user,
         setUser,
+        verifyToken,
+        updatedUser,
+        setUpdatedUser,
       }}
     >
       {children}

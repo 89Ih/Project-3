@@ -11,8 +11,12 @@ const UpdateProfile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [membership, setMembership] = useState("");
-  const { user } = useContext(SessionContext);
+  const { user, verifyToken, setUser, updatedUser } =
+    useContext(SessionContext);
   /* const navigate = useNavigate(); */
+
+  console.log("the user", user);
+  console.log("updated user", updatedUser);
 
   const params = useParams();
 
@@ -41,13 +45,17 @@ const UpdateProfile = () => {
       .then((response) => response.json());
   }, [UpdateProfile]); */
 
+  useEffect(() => {
+    verifyToken();
+  }, [updatedUser]);
+
   return (
     <div className="App-body">
       <Header />
       <div>
         <AddCredit />
         <h1>
-          <p> Your Credit: {user?.user?.credit} €</p>
+          <p> Your Credit: {updatedUser?.credit} €</p>
         </h1>
       </div>
 
