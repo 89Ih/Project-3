@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
 
@@ -6,7 +6,7 @@ import { SessionContext } from "../contexts/SessionContext";
 const AddCredit = () => {
   const [credit, setCredit] = useState("");
   const navigate = useNavigate();
-  const { user, token, test, setTest } = useContext(SessionContext);
+  const { user, token, test, setTest , verifyToken } = useContext(SessionContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
     setTest(!test);
@@ -22,6 +22,11 @@ const AddCredit = () => {
     console.log(parsed);
     // navigate("/courses");
   };
+
+  useEffect(() => {
+    verifyToken();
+  }, [test]);
+
 
   return (
     <div>
