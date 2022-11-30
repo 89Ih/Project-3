@@ -18,9 +18,9 @@ const Footer = () => {
     >
       <b>
         {isAuthenticated && (
-          <a className="nav-link text-light  " href="/login" onClick={logout}>
+          <Link className="nav-link text-light  " to="/login" onClick={logout}>
             LOGOUT
-          </a>
+          </Link>
         )}
       </b>
 
