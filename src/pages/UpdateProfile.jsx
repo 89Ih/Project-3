@@ -1,8 +1,10 @@
-import { useState } from "react";
+import {  useState } from "react";
 import axios from 'axios';
 import {useParams } from "react-router-dom";
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
+import Credit from "../comps/Credit";
+import AddCredit from "./AddCredit";
 
 const UpdateProfile = () => {
    
@@ -28,27 +30,33 @@ const UpdateProfile = () => {
     data.append("membership",membership);
  
     const res = await axios.put(`http://localhost:5005/auth/profile/${params.id}`, data)
+//////
+
 
   }
 
     return (<div className="App-body" >
       <Header/>
-        
+      <div>
+      <AddCredit/>
+      <h1><Credit/></h1>
+      </div>
+      
   <form onSubmit={handleUpdate}  className="d-flex flex-column  align-self-center border border-1 w-50">
   
   <input id='img' type="file" name="imageUrl" accept="image/png, image/jpg"  className="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"/>
    
   <div className="form-group p-2 w-100">
-  <input type="text" value={username} placeholder="username" required onChange={event => setUsername(event.target.value)} className="form-control"/>
+  <input type="text" value={username} placeholder=" change username" required onChange={event => setUsername(event.target.value)} className="form-control"/>
   </div>
   <div className="form-group p-2 w-100"> 
-  <input type="password" value={password} placeholder="password" required onChange={event => setPassword(event.target.value)} className="form-control" />
+  <input type="password" value={password} placeholder="change password" required onChange={event => setPassword(event.target.value)} className="form-control" />
   </div>
   <div className="form-group p-2 w-100"> 
-  <input type="email" value={email} placeholder="email" required onChange={event => setEmail(event.target.value)} className="form-control" />
+  <input type="email" value={email} placeholder="change email" required onChange={event => setEmail(event.target.value)} className="form-control" />
   </div>
   <div className="form-group p-2 w-100"> 
-  <input type="text" value={membership} placeholder="membership " required onChange={event => setMembership(event.target.value)} className="form-control" />
+  <input type="text" value={membership} placeholder="change membership" required onChange={event => setMembership(event.target.value)} className="form-control" />
   </div>
 
   <div className="form-group p-2 w-100">  

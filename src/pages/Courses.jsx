@@ -1,3 +1,5 @@
+import { SessionContext } from "../contexts/SessionContext";
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -33,8 +35,19 @@ const Courses = () => {
         
         setCourses(courseSorted);
       };
-    
-    
+
+     
+  
+    //   const deleteCourse = (courseId) => {
+    //     const filteredCourses = courses.filter((course) => {
+    //       return course._id !== courseId;
+    //     });
+      
+    //     setCourses(filteredCourses);
+    //   };
+
+
+      
     return (
     <div className='App-body'>
   
@@ -45,6 +58,7 @@ const Courses = () => {
                     <div className=" d-flex flex-row  ">
                         <input className="form-control" type="text" placeholder="Search" value={query} onChange={(event) => { setQuery(event.target.value) }} />
                         <img onClick={sortName} src={Sort} alt={'sort'} className="css-sort" />
+                        <h1>you have in your plan {courses.length} courses</h1>
                     </div>
                 </div>
                 <div className=" p-3 ">
@@ -56,6 +70,7 @@ const Courses = () => {
                                 <h5 className="card-title ">{course.title}</h5>
                                 <p className="card-text">{course.description}</p>
                                 <p className="card-text">{course.price}€</p>
+                               
                             </div>
                         </div>))}
                     </div>

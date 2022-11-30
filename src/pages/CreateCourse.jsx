@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import UploadWidget from "../comps/UploadWidget";
+
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";

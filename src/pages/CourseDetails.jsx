@@ -4,12 +4,17 @@ import {Link, useParams } from "react-router-dom";
 import ReactPlayer from 'react-player/youtube'
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
+import Rating from "../comps/Rating";
+import { useNavigate } from "react-router-dom";
+import { SessionContext } from "../contexts/SessionContext";
+import { useContext } from "react";
+
 const CourseDetails = () => {
-   
+    const navigate = useNavigate();
     const[course,setCourse] = useState([])
     
     const params = useParams();
-    // let [youtubeID] = useState('')
+  
    
     useEffect(()=> {
     
@@ -27,6 +32,15 @@ const CourseDetails = () => {
         retrieveCourseById()
     
     },[params.id]); 
+
+    const { isAuthenticated,user, token } = useContext(SessionContext);
+    
+    const deleteCourse = async (event) => {
+        event.preventDefault();
+        const res = await axios.delete(`http://localhost:5005/course/${params.id}`, course._id);
+        console.log(res.data);
+        navigate("/courses");
+      };
     
    
     
@@ -39,12 +53,16 @@ const CourseDetails = () => {
            <h2>{course.title}</h2>
            <p>{course.description}</p>
            <p>{course.price}€</p> 
+                {user?.user?.role === "admin" && (
+                    <p><button onClick={deleteCourse}>Delete</button></p>
+                )}
+
        </div>
            
         </div>
+        <Rating/>
         
-        
-           <Footer/>
+        <Footer/>
       </div> );
 }
  
