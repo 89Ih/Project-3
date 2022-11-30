@@ -2,6 +2,7 @@ import header from "../icons/header.png";
 import { SessionContext } from "../contexts/SessionContext";
 import { useContext } from "react";
 import Profile from "./profile";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { user, token } = useContext(SessionContext);
@@ -10,14 +11,14 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg  ">
       <div className="container-fluid d-flex">
         <div className="w-75">
-          <a href="/">
+          <Link to="/">
             <img
               src={header}
               alt={"header"}
               style={{ height: 75 }}
               className="mx-2"
             />
-          </a>
+          </Link>
           <span className="p-2 w-100   navbar-brand mb-5 h1 text-light">
             Master Course
           </span>
@@ -40,55 +41,55 @@ const Header = () => {
           <div className="navbar-nav " style={{ gap: 10 }}>
             <b>
               {isAuthenticated && (
-                <a className="nav-link text-light " href="/about">
+                <Link className="nav-link text-light " to="/about">
                   About us
-                </a>
+                </Link>
               )}
             </b>
             <b>
               {isAuthenticated && (
-                <a className="nav-link text-light " href="/contact">
+                <Link className="nav-link text-light " to="/contact">
                   Contact
-                </a>
+                </Link>
               )}
             </b>
             <b>
               {isAuthenticated && (
-                <a className="nav-link text-light " href="/courses">
+                <Link className="nav-link text-light " to="/courses">
                   All courses
-                </a>
+                </Link>
               )}
             </b>
             <b>
               {user?.user?.membership == "teacher" && (
-                <a className="nav-link text-light " href="/create">
+                <Link className="nav-link text-light " to="/create">
                   Add new course
-                </a>
+                </Link>
               )}
             </b>
             <b>
               {!isAuthenticated && (
-                <a
+                <Link
                   className="p-1  nav-link css rounded  text-center "
-                  href="/login"
+                  to="/login"
                   style={{ width: 75 }}
                 >
                   Log in
-                </a>
+                </Link>
               )}
             </b>
             <b>
               {!isAuthenticated && (
-                <a
+                <Link
                   className="p-1  nav-link css rounded  text-center "
-                  href="/signup"
+                  to="/signup"
                   style={{ width: 75 }}
                 >
                   Sign up
-                </a>
+                </Link>
               )}
             </b>
-            {/* <b><a className="nav-link text-light " href="javascript:history.back()">Back</a></b> */}
+            {/* <b><a className="nav-link text-light " to="javascript:history.back()">Back</a></b> */}
             <Profile/>
           </div>
         </div>
