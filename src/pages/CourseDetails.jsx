@@ -20,7 +20,7 @@ const CourseDetails = () => {
     
         const retrieveCourseById = async()=>{
     
-            const res = await axios.get(`http://localhost:5005/course/${params.id}`);
+            const res = await axios.get(`${process.env.REACT_APP_URL}course/${params.id}`);
     
             console.log(res.data)
 

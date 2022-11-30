@@ -12,7 +12,7 @@ const Rating = () => {
     const { user, token } = useContext(SessionContext);
     const handleSubmit = async event => {
         event.preventDefault()
-        const response = await fetch(`http://localhost:5005/course/${params.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}course/${params.id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
