@@ -11,8 +11,8 @@ const UpdateProfile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [membership, setMembership] = useState("");
-  const { user, verifyToken, setUser, updatedUser } =
-    useContext(SessionContext);
+  const { user, verifyToken, test, updatedUser } = useContext(SessionContext);
+
   /* const navigate = useNavigate(); */
 
   console.log("the user", user);
@@ -47,7 +47,7 @@ const UpdateProfile = () => {
 
   useEffect(() => {
     verifyToken();
-  }, [updatedUser]);
+  }, [test]);
 
   return (
     <div className="App-body">

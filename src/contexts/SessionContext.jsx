@@ -12,6 +12,7 @@ const SessionContextProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [updatedUser, setUpdatedUser] = useState();
+  const [test, setTest] = useState(false);
 
   const verifyToken = async () => {
     const response = await fetch("http://localhost:5005/auth/verify", {
@@ -67,6 +68,8 @@ const SessionContextProvider = ({ children }) => {
         verifyToken,
         updatedUser,
         setUpdatedUser,
+        test,
+        setTest,
       }}
     >
       {children}

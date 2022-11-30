@@ -7,9 +7,10 @@ import Footer from "../comps/Footer";
 const AddCredit = () => {
   const [credit, setCredit] = useState("");
   const navigate = useNavigate();
-  const { user, token } = useContext(SessionContext);
+  const { user, token, test, setTest } = useContext(SessionContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setTest(!test);
     let res = await fetch("http://localhost:5005/credit", {
       method: "POST",
       headers: {
