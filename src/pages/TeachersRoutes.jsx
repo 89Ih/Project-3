@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
 
 const TeachersRoutes = ({ children }) => {

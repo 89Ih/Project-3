@@ -17,9 +17,10 @@ import { SessionContext } from "./contexts/SessionContext";
 import { useContext } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import CoursesBasic from "./pages/CoursesBasic";
 
 function App() {
+  const { isAuthenticated } = useContext(SessionContext);
   return (
     <div>
       <Routes>
@@ -27,14 +28,17 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/course/:id" element={<CourseDetails />} />
-        <Route
-          path="courses"
-          element={
-            <PrivateRoutes>
-              <Courses />
-            </PrivateRoutes>
-          }
-        />
+        <Route path="/basic" element={<CoursesBasic />} />
+        {isAuthenticated && (
+          <Route
+            path="courses"
+            element={
+              <PrivateRoutes>
+                <Courses />
+              </PrivateRoutes>
+            }
+          />
+        )}
         <Route
           path="create"
           element={
@@ -43,10 +47,9 @@ function App() {
             </TeachersRoutes>
           }
         />
-        <Route path="/myCourses"    element={<MyCourses />} />
-        <Route path="/credit"       element={<AddCredit />} />
-        <Route path="/profile/:id"  element={< UpdateProfile/>} />
-       
+        <Route path="/myCourses" element={<MyCourses />} />
+        <Route path="/credit" element={<AddCredit />} />
+        <Route path="/profile/:id" element={<UpdateProfile />} />
       </Routes>
     </div>
   );
