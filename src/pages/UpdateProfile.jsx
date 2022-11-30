@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
+
 import AddCredit from "./AddCredit";
 import { SessionContext } from "../contexts/SessionContext";
 
@@ -39,11 +40,6 @@ const UpdateProfile = () => {
     //////
   };
 
-  /*   useEffect(() => {
-    axios
-      .get(`http://localhost:5005/auth/profile/${params.id}`)
-      .then((response) => response.json());
-  }, [UpdateProfile]); */
 
   useEffect(() => {
     verifyToken();
@@ -57,6 +53,7 @@ const UpdateProfile = () => {
         <h1>
           <p> Your Credit: {updatedUser?.credit} €</p>
         </h1>
+        <p>{user?.user?.credit}</p>
       </div>
 
       <form

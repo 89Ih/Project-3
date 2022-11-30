@@ -12,6 +12,7 @@ import PrivateRoutes from "./pages/PrivateRoutes";
 import UpdateProfile from "./pages/UpdateProfile";
 import MyCourses from "./pages/MyCourses";
 
+
 import { SessionContext } from "./contexts/SessionContext";
 import { useContext } from "react";
 

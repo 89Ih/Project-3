@@ -42,7 +42,13 @@ const CourseDetails = () => {
         navigate("/courses");
       };
     
-   
+      const deleteRating= async (event) => {
+        event.preventDefault();
+        const res = await axios.delete(`http://localhost:5005/rating/${params.id}`, course._id);
+        console.log(res.data);
+        navigate(`/courses/${course._id}`);
+      };
+  
     
     
     return (<div className="App-body" >

@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState,useContext,useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
-
+import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 const Rating = () => {
     const params = useParams();
@@ -23,20 +24,33 @@ const Rating = () => {
         console.log(parsed)
        
       }
-    //   const[rate,setRate] = useState([])
-    //   useEffect(()=> {
-    //     const retrieveRating = async()=>{
-    //         const res = await axios.get(`http://localhost:5005/course/${params.id}`);
-    //         console.log("Rating",res.data)
-    //         setRate(res.data);
-    //     }
-    //     retrieveRating()
-    // },[params.id]); 
+      const[rate,setRate] = useState({})
+      useEffect(()=> {
+        const retrieveRating = async()=>{
+            const res = await axios.get(`http://localhost:5005/rating/${params.id}`);
+            console.log("Rating",res.data)
+            setRate(res.data);
+        }
+        retrieveRating()
+    },[params.id]); 
+
+    const navigate = useNavigate();
+    const deleteRating= async (event) => {
+      event.preventDefault();
+      const res = await axios.delete(`http://localhost:5005/rating/${params.id}`, params.id);
+      console.log(res.data);
+      // navigate(`/courses/${course._id}`);
+    };
 
 
 
     return ( <div>
-          
+        
+       <div>
+       <h5>your rating: {rate.rate?.rating}</h5>
+        <h5>your comment: {rate.rate?.comment}</h5>
+        <p><button onClick={deleteRating}>Delete</button></p>
+       </div>
 <form
         onSubmit={handleSubmit}
         className="d-flex flex-column  align-self-center border border-1 w-50"
