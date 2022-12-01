@@ -62,7 +62,7 @@ const Header = () => {
               )}
             </b>
             <b>
-              {user?.user?.membership == "teacher" && (
+              {isAuthenticated && user?.user?.membership == "teacher" && (
                 <Link className="nav-link text-light " to="/create">
                   Add new course
                 </Link>
