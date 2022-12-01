@@ -10,7 +10,7 @@ const AddCredit = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setTest(!test);
-    let res = await fetch(`${process.env.REACT_APP_URL}credit`, {
+    let res = await fetch(`${process.env.REACT_APP_API_URL}credit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

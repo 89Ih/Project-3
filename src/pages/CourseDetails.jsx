@@ -20,7 +20,7 @@ const CourseDetails = () => {
     
         const retrieveCourseById = async()=>{
     
-            const res = await axios.get(`${process.env.REACT_APP_URL}course/${params.id}`);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}course/${params.id}`);
     
             console.log(res.data)
 
@@ -37,7 +37,7 @@ const CourseDetails = () => {
     
     const deleteCourse = async (event) => {
         event.preventDefault();
-        const res = await axios.delete(`${process.env.REACT_APP_URL}course/${params.id}`, course._id);
+        const res = await axios.delete(`${process.env.REACT_APP_API_URL}course/${params.id}`, course._id);
         console.log(res.data);
         navigate("/courses");
       };

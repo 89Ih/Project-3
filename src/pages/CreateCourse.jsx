@@ -23,7 +23,7 @@ const CreateCourse = () => {
     data.append("price", price);
     data.append("video", video);
     data.append("title", title);
-    const res = await axios.post(`${process.env.REACT_APP_URL}create`, data);
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}create`, data);
     console.log(res.data);
     navigate("/courses");
   };

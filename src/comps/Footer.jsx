@@ -5,10 +5,13 @@ import { SessionContext } from "../contexts/SessionContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-const Footer = () => {
+  
+  const Footer = () => {
   const { isAuthenticated, token } = useContext(SessionContext);
   const [isLoggedin, setIsLoggedin] = useState(false);
+  
   const navigate = useNavigate();
+ 
   const logout = () => {
     
     localStorage.clear();
@@ -29,7 +32,7 @@ const Footer = () => {
       </b>
 
       {isAuthenticated ? (
-        <img src={circle} alt={"circle"} className="c-success   " />
+        <img src={circle} alt={"circle"} className="c-success " />
       ) : (
         <img src={circle} alt={"circle"} className="c-danger" />
       )}

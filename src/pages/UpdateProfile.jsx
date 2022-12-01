@@ -35,7 +35,7 @@ const UpdateProfile = () => {
     data.append("membership", membership);
 
     const res = await axios.put(
-      `${process.env.REACT_APP_URL}${params.id}`,
+      `${process.env.REACT_APP_API_URL}${params.id}`,
       data
     );
     //////

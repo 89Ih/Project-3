@@ -21,7 +21,7 @@ const Signup = () => {
     data.append("email", email);
     data.append("membership", membership);
 
-    const res = await axios.post(`${process.env.REACT_APP_URL}auth/signup`, data);
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}auth/signup`, data);
 
     console.log(res.data);
     navigate("/login");

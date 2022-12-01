@@ -12,9 +12,11 @@ const Login = () => {
   /*   const [isLoggedin, setIsLoggedin] = useState(false); */
   const { setToken } = useContext(SessionContext);
 
+  console.log(process.env)
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let res = await fetch(`${process.env.REACT_APP_URL}auth/login`, {
+    let res = await fetch(`${process.env.REACT_APP_API_URL}auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),

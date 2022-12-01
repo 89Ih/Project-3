@@ -12,7 +12,7 @@ const CoursesBasic = () => {
 
   useEffect(() => {
     const retrieveCourses = async () => {
-      const res = await axios.get(`${process.env.REACT_APP_URL}courses`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}courses`);
 
       console.log(res.data);
 
