@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -11,8 +11,7 @@ const Footer = () => {
     useContext(SessionContext);
   const [isLoggedin, setIsLoggedin] = useState(true);
 
-  const navigate = useNavigate();
-
+ 
   const logout = () => {
     localStorage.clear();
     console.log("1");
@@ -22,7 +21,7 @@ const Footer = () => {
     console.log("3");
     setIsAuthenticated(false);
     console.log("4");
-    navigate("/login");
+  
   };
 
   return (
@@ -32,12 +31,12 @@ const Footer = () => {
     >
       <b>
         {isAuthenticated && (
-          <button className="nav-link text-light" onClick={logout}>
+          <Link className="nav-link text-light" to="/login" onClick={logout}>
             Log out
-          </button>
+          </Link>
         )}
       </b>
-
+     
       {isAuthenticated ? (
         <img src={circle} alt={"circle"} className="c-success " />
       ) : (

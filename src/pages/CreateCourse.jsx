@@ -90,7 +90,7 @@ const CreateCourse = () => {
           />
         </div>
         <div className="form-group p-2 w-100">
-          <button type="submit" className="btn w-100 css">
+          <button type="submit" className="css-button w-100">
             Create
           </button>
         </div>

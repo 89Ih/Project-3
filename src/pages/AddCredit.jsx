@@ -25,15 +25,17 @@ const AddCredit = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className=" form-group d-flex">
         <input
           type="number"
           value={credit}
           placeholder="Credit Amount"
           onChange={(event) => setCredit(event.target.value)}
+          className="form-control"
+          style={{ border: "none" }}
         />
 
-        <button type="submit">Add Credit</button>
+        <button type="submit"  className="css css-rating-box" style={{ border: "none",width:150 }}>Add Credit</button>
       </form>
     </div>
   );

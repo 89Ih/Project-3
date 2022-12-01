@@ -56,7 +56,7 @@ const Login = () => {
           />
         </div>
         <div className="form-group p-2 ">
-          <button type="submit" className="btn w-100 css ">
+          <button type="submit" className="css-button w-100  ">
             Login
           </button>
         </div>

@@ -49,30 +49,35 @@ const UpdateProfile = () => {
   return (
     <div className="App-body">
       <Header />
-      <div>
-        <AddCredit />
-        <h1>
-          <p> Your Credit: {updatedUser?.credit} €</p>
-          <p>{updatedUser?.email}</p>
-        </h1>
-        <p>{user?.user?.credit}</p>
-      </div>
-
+     
+      <div className=" d-flex flex-column align-self-center align-items-center w-75 ">
+      <div className=" p-2 w-50 align-self-center align-items-center rounded border" >
+          <div className="card-title d-flex flex-row rounded border  bg-white  ">
+            <p className="card-text flex-grow-1 m-2">
+              Your Credit: {updatedUser?.credit} €
+            </p>
+            <AddCredit />
+          </div>
+        </div>
       <form
+        style={{ border: "none" }}
         onSubmit={handleUpdate}
-        className="d-flex flex-column  align-self-center border border-1 w-50"
+        className="d-flex flex-column  align-self-center border border-1 w-50 "
+        
       >
-        <input
-          id="img"
-          type="file"
-          name="imageUrl"
-          accept="image/png, image/jpg"
-          className="form-control"
-          placeholder=""
-          aria-label=""
-          aria-describedby="basic-addon1"
-        />
-
+        
+        <div className="form-group p-2 w-100">
+          <input
+            id="img"
+            type="file"
+            name="imageUrl"
+            accept="image/png, image/jpg"
+            className="form-control"
+            placeholder=""
+            aria-label=""
+            aria-describedby="basic-addon1"
+          />
+        </div>
         <div className="form-group p-2 w-100">
           <input
             type="text"
@@ -116,11 +121,13 @@ const UpdateProfile = () => {
         </div>
 
         <div className="form-group p-2 w-100">
-          <button type="submit" className="btn w-100 css">
+          <button type="submit" className="css-button w-100">
             Update
           </button>
         </div>
       </form>
+      </div>
+  
       <Footer />
     </div>
   );

@@ -54,7 +54,7 @@ const CourseDetails = () => {
             <p>{course.description}</p>
             {/* <p>{course.price}€</p> */}
             {user?.user?.role === "admin" && (
-                <p><button onClick={deleteCourse}>Delete</button></p>
+                <button className="css-button w-25" onClick={deleteCourse}>Delete</button>
             )}
             <Rating />
         </div>

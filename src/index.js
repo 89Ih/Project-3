@@ -7,6 +7,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { MantineProvider } from '@mantine/core'
 import SessionContextProvider from './contexts/SessionContext'
 import AppContextProvider from './contexts/AppContext'
+// src/index.js
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -5,6 +5,10 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: whitesmoke;
+  color: #414141;
+}
+.css-color{
+ color: #62bee6;
 }
 .css {
 background-color: #62bee6;
@@ -32,4 +36,15 @@ background-color: #414141;
 
 .css-rating-box{
   border-radius: 0 5px 5px 0;
+}
+
+.css-button{
+  background-color: #62bee6;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  color: #414141;
+}
+img:hover{
+  transform: scale(1.1);
 }

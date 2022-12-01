@@ -12,7 +12,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg  ">
       <div className="container-fluid d-flex">
         <div className="w-75">
-          <Link to="/">
+          <Link to="/" >
             <img
               src={header}
               alt={"header"}
