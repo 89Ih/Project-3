@@ -80,7 +80,9 @@ const Courses = () => {
                       className="rounded border"
                     />
                   </Link>
-                  <p>{course.title}</p>
+                  <p>
+                    <b>{course.title}</b>
+                  </p>
                   <p>{course.description}</p>
                   <p>
                     <b>{course.price} </b> €{" "}

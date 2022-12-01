@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from 'axios';
-import { Link, useParams } from "react-router-dom";
-import ReactPlayer from 'react-player/youtube'
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import ReactPlayer from "react-player/youtube";
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
 import Rating from "../comps/Rating";
@@ -11,60 +11,61 @@ import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const CourseDetails = () => {
-    const navigate = useNavigate();
-    const [course, setCourse] = useState([])
+  const navigate = useNavigate();
+  const [course, setCourse] = useState([]);
 
-    const params = useParams();
+  const params = useParams();
 
+  useEffect(() => {
+    const retrieveCourseById = async () => {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}course/${params.id}`
+      );
 
-    useEffect(() => {
-        const retrieveCourseById = async () => {
-            const res = await axios.get(
-                `${process.env.REACT_APP_API_URL}course/${params.id}`
-            );
+      console.log(res.data);
 
-            console.log(res.data);
-
-            setCourse(res.data);
-        };
-
-        retrieveCourseById();
-    }, [params.id]);
-
-    const { isAuthenticated, user, token } = useContext(SessionContext);
-
-    const deleteCourse = async (event) => {
-        event.preventDefault();
-        const res = await axios.delete(`${process.env.REACT_APP_API_URL}course/${params.id}`, course._id);
-        console.log(res.data);
-        navigate("/courses");
+      setCourse(res.data);
     };
 
+    retrieveCourseById();
+  }, [params.id]);
 
+  const { user } = useContext(SessionContext);
 
-    return (<div className="App-body" >
-        <div>
-            <Header />
-        </div>
+  const deleteCourse = async (event) => {
+    event.preventDefault();
+    const res = await axios.delete(
+      `${process.env.REACT_APP_API_URL}course/${params.id}`,
+      course._id
+    );
+    console.log(res.data);
+    navigate("/courses");
+  };
 
+  return (
+    <div className="App-body">
+      <div>
+        <Header />
+      </div>
 
-        <div className=" d-flex flex-column align-self-center align-items-center rounded border p-1 ">
-            <ReactPlayer url={course.video} className="w-75" />
-            <h2>{course.title}</h2>
-            <p>{course.description}</p>
-            {/* <p>{course.price}€</p> */}
-            {user?.user?.role === "admin" && (
-                <button className="css-button w-25" onClick={deleteCourse}>Delete</button>
-            )}
-            <Rating />
-        </div>
+      <div className=" d-flex flex-column align-self-center align-items-center rounded border p-1 ">
+        <ReactPlayer url={course.video} className="w-75" />
+        <h2>{course.title}</h2>
+        <p>{course.description}</p>
+        {/* <p>{course.price}€</p> */}
+        {user?.user?.role === "admin" && (
+          <button className="css-button w-25" onClick={deleteCourse}>
+            Delete
+          </button>
+        )}
+        <Rating />
+      </div>
 
-        <div></div>
+      <div></div>
 
-
-
-        <Footer />
-    </div>);
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default CourseDetails;

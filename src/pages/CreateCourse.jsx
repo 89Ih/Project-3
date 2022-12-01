@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-
 import Header from "../comps/Header";
 import Footer from "../comps/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,7 +22,10 @@ const CreateCourse = () => {
     data.append("price", price);
     data.append("video", video);
     data.append("title", title);
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}create`, data);
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}create`,
+      data
+    );
     console.log(res.data);
     navigate("/courses");
   };

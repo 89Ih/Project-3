@@ -1,12 +1,11 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
 
 const AddCredit = () => {
   const [credit, setCredit] = useState("");
   const navigate = useNavigate();
-  const { user, token, test, setTest, verifyToken } =
-    useContext(SessionContext);
+  const { user, token, verifyToken } = useContext(SessionContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
     let res = await fetch(`${process.env.REACT_APP_API_URL}credit`, {
@@ -35,7 +34,13 @@ const AddCredit = () => {
           style={{ border: "none" }}
         />
 
-        <button type="submit"  className="css css-rating-box" style={{ border: "none",width:150 }}>Add Credit</button>
+        <button
+          type="submit"
+          className="css css-rating-box"
+          style={{ border: "none", width: 150 }}
+        >
+          Add Credit
+        </button>
       </form>
     </div>
   );

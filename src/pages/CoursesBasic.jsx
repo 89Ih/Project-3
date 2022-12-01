@@ -5,7 +5,7 @@ import Header from "../comps/Header";
 import Footer from "../comps/Footer";
 import Sort from "../icons/sort.png";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Card, Row, Col, Divider, Input, Button } from "antd";
+import { Card, Row, Col } from "antd";
 const CoursesBasic = () => {
   const [courses, setCourses] = useState([]);
   const [query, setQuery] = useState("");
