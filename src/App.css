@@ -16,7 +16,7 @@ background-color: #414141;
 }
 
 .c-danger {
- 
+
   filter: invert(12%) sepia(100%) saturate(6411%) hue-rotate(5deg) brightness(94%) contrast(121%);
   height: 15px;
 }
@@ -28,4 +28,8 @@ background-color: #414141;
 
 .css-sort {
   filter: invert(86%) sepia(47%) saturate(6042%) hue-rotate(170deg) brightness(93%) contrast(89%);
+}
+
+.css-rating-box{
+  border-radius: 0 5px 5px 0;
 }
