@@ -21,11 +21,10 @@ const Home = () => {
         <div className="card-body d-flex flex-column align-items-center ">
           <h5 className="card-title ">Card title</h5>
           <p className="card-text">
-            Master Course is a platform that allows instructors to display
-            online courses on their preferred topics. instructors can upload
-            videos, source code for developers,PowerPoint presentations, PDFs,
-            audio, ZIP files and any other content that learners might find
-            helpful.
+            Master Course is a platform where you can teach and learn online.
+            Teachers can create courses with videos as well as describe the
+            details of their course content. Students have access to the courses
+            and they can leave comments and rate them.
           </p>
         </div>
       </div>

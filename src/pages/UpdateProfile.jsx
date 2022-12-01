@@ -97,10 +97,11 @@ const UpdateProfile = () => {
           <input
             type="email"
             value={email}
-            placeholder="change email"
+            placeholder="Change email"
             required
             onChange={(event) => setEmail(event.target.value)}
             className="form-control"
+            defaultValue="Change email"
           />
         </div>
         <div className="form-group p-2 w-100">

@@ -7,9 +7,6 @@ const PrivateRoutes = ({ children }) => {
   const { isAuthenticated, user, token, updatedUser, verifyToken, test } =
     useContext(SessionContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    verifyToken();
-  }, [test]);
 
   return updatedUser && updatedUser?.credit >= 30 ? (
     <>{children}</>
