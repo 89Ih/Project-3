@@ -6,8 +6,8 @@
   background-color: whitesmoke;
   color: #414141;
 }
-.css-color{
- color: #62bee6;
+.css-color {
+  color: #62bee6;
 }
 .css {
   background-color: #62bee6;
@@ -37,17 +37,14 @@ nav {
 .css-rating-box {
   border-radius: 0 5px 5px 0;
 }
-<<<<<<< Updated upstream
 
-.css-button{
+.css-button {
   background-color: #62bee6;
   border: none;
   border-radius: 5px;
   height: 40px;
   color: #414141;
 }
-img:hover{
+img:hover {
   transform: scale(1.1);
 }
-=======
->>>>>>> Stashed changes

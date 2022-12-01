@@ -19,7 +19,7 @@ const Home = () => {
           style={{ height: 150, width: 200 }}
         />
         <div className="card-body d-flex flex-column align-items-center ">
-          <h5 className="card-title ">Card title</h5>
+          <h5 className="card-title ">Master Course</h5>
           <p className="card-text">
             Master Course is a platform where you can teach and learn online.
             Teachers can create courses with videos as well as describe the
