@@ -12,12 +12,12 @@ import PrivateRoutes from "./pages/PrivateRoutes";
 import UpdateProfile from "./pages/UpdateProfile";
 import MyCourses from "./pages/MyCourses";
 
-
 import { SessionContext } from "./contexts/SessionContext";
 import { useContext } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import CoursesBasic from "./pages/CoursesBasic";
+import Header from "./comps/Header";
 
 function App() {
   const { isAuthenticated } = useContext(SessionContext);

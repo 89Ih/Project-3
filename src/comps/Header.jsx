@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const { user, token } = useContext(SessionContext);
-  const { isAuthenticated } = useContext(SessionContext);
+  const { isAuthenticated, updatedUser } = useContext(SessionContext);
+  console.log("check the authti", isAuthenticated);
   return (
     <nav className="navbar navbar-expand-lg  ">
       <div className="container-fluid d-flex">
@@ -40,11 +41,11 @@ const Header = () => {
         >
           <div className="navbar-nav " style={{ gap: 10 }}>
             <b>
-              {isAuthenticated && (
+              {isAuthenticated ? (
                 <Link className="nav-link text-light " to="/about">
                   About us
                 </Link>
-              )}
+              ) : null}
             </b>
             <b>
               {isAuthenticated && (
@@ -90,7 +91,7 @@ const Header = () => {
               )}
             </b>
             {/* <b><a className="nav-link text-light " to="javascript:history.back()">Back</a></b> */}
-            <Profile/>
+            <Profile />
           </div>
         </div>
       </div>

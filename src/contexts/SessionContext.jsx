@@ -15,11 +15,14 @@ const SessionContextProvider = ({ children }) => {
   const [test, setTest] = useState(false);
 
   const verifyToken = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}auth/verify`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}auth/verify`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const parsed = await response.json();
     console.log("parsed tokrn", parsed.payload);
     if (parsed.message === "Token OK") {
@@ -40,14 +43,17 @@ const SessionContextProvider = ({ children }) => {
   const fetchWithToken =
     (method, endpoint, callback, body = null) =>
     async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}${endpoint}`, {
-        method,
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body,
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}${endpoint}`,
+        {
+          method,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body,
+        }
+      );
       const parsed = await response.json();
 
       if (parsed.message === "Token OK") {
@@ -62,6 +68,7 @@ const SessionContextProvider = ({ children }) => {
         token,
         setToken,
         isAuthenticated,
+        setIsAuthenticated,
         fetchWithToken,
         user,
         setUser,

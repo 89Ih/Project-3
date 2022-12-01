@@ -35,12 +35,12 @@ const UpdateProfile = () => {
     data.append("membership", membership);
 
     const res = await axios.put(
-      `${process.env.REACT_APP_API_URL}${params.id}`,
+      `${process.env.REACT_APP_API_URL}auth/profile/${params.id}`,
       data
     );
     //////
+    verifyToken();
   };
-
 
   useEffect(() => {
     verifyToken();
@@ -53,6 +53,7 @@ const UpdateProfile = () => {
         <AddCredit />
         <h1>
           <p> Your Credit: {updatedUser?.credit} €</p>
+          <p>{updatedUser?.email}</p>
         </h1>
         <p>{user?.user?.credit}</p>
       </div>

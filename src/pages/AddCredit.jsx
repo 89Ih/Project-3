@@ -2,14 +2,13 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
 
-
 const AddCredit = () => {
   const [credit, setCredit] = useState("");
   const navigate = useNavigate();
-  const { user, token, test, setTest , verifyToken } = useContext(SessionContext);
+  const { user, token, test, setTest, verifyToken } =
+    useContext(SessionContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setTest(!test);
     let res = await fetch(`${process.env.REACT_APP_API_URL}credit`, {
       method: "POST",
       headers: {
@@ -20,13 +19,9 @@ const AddCredit = () => {
     });
     const parsed = await res.json();
     console.log(parsed);
+    verifyToken();
     // navigate("/courses");
   };
-
-  useEffect(() => {
-    verifyToken();
-  }, [test]);
-
 
   return (
     <div>
