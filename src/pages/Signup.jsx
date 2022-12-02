@@ -93,7 +93,7 @@ const navigate = useNavigate();
         </div>
 
         <div className="form-group p-2 ">
-          <button className="btn w-100 css " type="submit">
+          <button className=" w-100 css-button " type="submit">
             Signup
           </button>
         </div>

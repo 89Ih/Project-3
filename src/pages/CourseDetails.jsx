@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { SessionContext } from "../contexts/SessionContext";
 import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import deleteIcon from "../icons/delete.png";
 const CourseDetails = () => {
   const navigate = useNavigate();
   const [course, setCourse] = useState([]);
@@ -44,26 +44,31 @@ const CourseDetails = () => {
 
   return (
     <div className="App-body">
-      <div>
+      <div >
         <Header />
+   
       </div>
 
       <div className=" d-flex flex-column align-self-center align-items-center rounded border p-1 ">
+   
         <ReactPlayer url={course.video} className="w-75" />
         <h2>{course.title}</h2>
         <p>{course.description}</p>
-        {/* <p>{course.price}€</p> */}
-        {user?.user?.role === "admin" && (
-          <button className="css-button w-25" onClick={deleteCourse}>
-            Delete
-          </button>
-        )}
+      
+       
+       
         <Rating />
       </div>
 
-      <div></div>
+      <div>
+      {user?.user?.role === "admin" && (
+          <img src={deleteIcon} alt={"name"} onClick={deleteCourse} className="mx-2"/>
+          
+        )}
+          <Footer />
+      </div>
 
-      <Footer />
+    
     </div>
   );
 };

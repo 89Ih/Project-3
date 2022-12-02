@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { SessionContext } from "../contexts/SessionContext";
@@ -6,11 +6,18 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Stars from "./Stars";
 const Rating = () => {
+  
+  
+  
+  const navigate = useNavigate();
   const params = useParams();
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
 
   const { user, token } = useContext(SessionContext);
+  
+  ///////////////////create Rating dependes on courseID ///////////////////////
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await fetch(
@@ -25,10 +32,15 @@ const Rating = () => {
       }
     );
     const parsed = await response.json();
+    document.querySelector("#con2").style.visibility = "hidden";
     console.log(parsed);
   };
+ 
+ //////////////////  Get Rating by ID ///////////////////////////
+
   const [rate, setRate] = useState({});
-  useEffect(() => {
+  
+    useEffect(() => {
     const retrieveRating = async () => {
       const res = await axios.get(
         `${process.env.REACT_APP_API_URL}rating/${params.id}`
@@ -37,47 +49,41 @@ const Rating = () => {
       setRate(res.data);
     };
     retrieveRating();
+    navigate(`/course/${params.id}`)
+
+    //delete
+
+
   }, [params.id]);
 
-  const navigate = useNavigate();
-  const deleteRating = async (event) => {
+//////////// Delete Rating ///////////////////////////
+ 
+const deleteRating = async (event) => {
     event.preventDefault();
     const res = await axios.delete(
       `${process.env.REACT_APP_API_URL}rating/${params.id}`,
       params.id
     );
-    console.log(res.data);
-    // navigate(`/courses/${course._id}`);
+    // console.log(res.data);
+    var x = document.querySelector("#con1").style.visibility = "hidden";
   };
+    
+
+
 
   return (
     <div>
+     
       <div className="p-2" style={{ width: 700 }}>
         <div className="card-body d-flex flex-column m-3" style={{ gap: 10 }}>
-          {/* {rate.rate?.comment === null && rate.rate?.rating === null? (
-        <div className="card-title d-flex flex-row rounded border  bg-white " >
-        <p className="card-text flex-grow-1 m-2">{rate.rate?.comment} </p>
-        <p className="card-text mx-4 m-2"><Stars>{rate.rate?.rating}</Stars></p>
-        <button onClick={deleteRating} className=" css css-rating-box" style={{ border: "none" }}>Delete</button>
-        </div>
-      ) : (
-       <p></p>
-      )} */}
-          <div className="card-title d-flex flex-row rounded border  bg-white ">
+ 
+          <div className="card-title d-flex flex-row rounded border  bg-white " id="con1">
             <p className="card-text flex-grow-1 m-2">{rate.rate?.comment} </p>
-            <p className="card-text mx-4 m-2">
-              <Stars>{rate.rate?.rating}</Stars>
-            </p>
-            <button
-              onClick={deleteRating}
-              className=" css css-rating-box"
-              style={{ border: "none" }}
-            >
-              Delete
-            </button>
-          </div>
+            <div className="card-text mx-4 m-2"><Stars>{rate.rate?.rating}</Stars></div>
+            <button onClick={deleteRating} className=" css css-rating-box" style={{ border: "none" }}>Delete</button>
+            </div>
 
-          <form onSubmit={handleSubmit} className="">
+          <form onSubmit={handleSubmit} id="con2">
             <div className="form-group  d-flex rounded border  ">
               <input
                 type="text"
